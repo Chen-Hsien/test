@@ -10,7 +10,8 @@ import Web3 from "web3";
 
 // IMP START - SDK Initialization
 // IMP START - Dashboard Registration
-const clientId = "BPi5PB_UiIZ-cPz1GtV5i1I2iOSOHuimiXBI0e-Oe_u6X3oVAbCiAZOTEBtTXw4tsluTITPqA8zMsfxIKMjiqNQ"; // get from https://dashboard.web3auth.io
+const clientId =
+  "BPi5PB_UiIZ-cPz1GtV5i1I2iOSOHuimiXBI0e-Oe_u6X3oVAbCiAZOTEBtTXw4tsluTITPqA8zMsfxIKMjiqNQ"; // get from https://dashboard.web3auth.io
 // IMP END - Dashboard Registration
 
 const chainConfig = {
@@ -40,22 +41,24 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    const init = async () => {
-      try {
-        // IMP START - SDK Initialization
-        await web3auth.initModal();
-        // IMP END - SDK Initialization
-        setProvider(web3auth.provider);
+    if (typeof document !== "undefined") {
+      const init = async () => {
+        try {
+          // IMP START - SDK Initialization
+          await web3auth.initModal();
+          // IMP END - SDK Initialization
+          setProvider(web3auth.provider);
 
-        if (web3auth.connected) {
-          setLoggedIn(true);
+          if (web3auth.connected) {
+            setLoggedIn(true);
+          }
+        } catch (error) {
+          console.error(error);
         }
-      } catch (error) {
-        console.error(error);
-      }
-    };
+      };
 
-    init();
+      init();
+    }
   }, []);
 
   const login = async () => {
@@ -186,7 +189,11 @@ function App() {
   return (
     <div className="container">
       <h1 className="title">
-        <a target="_blank" href="https://web3auth.io/docs/sdk/pnp/web/modal" rel="noreferrer">
+        <a
+          target="_blank"
+          href="https://web3auth.io/docs/sdk/pnp/web/modal"
+          rel="noreferrer"
+        >
           Web3Auth{" "}
         </a>
         & NextJS Quick Start
