@@ -10,8 +10,7 @@ import Web3 from "web3";
 
 // IMP START - SDK Initialization
 // IMP START - Dashboard Registration
-const clientId =
-  "BPi5PB_UiIZ-cPz1GtV5i1I2iOSOHuimiXBI0e-Oe_u6X3oVAbCiAZOTEBtTXw4tsluTITPqA8zMsfxIKMjiqNQ"; // get from https://dashboard.web3auth.io
+const clientId = process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID || ""; // get from https://dashboard.web3auth.io
 // IMP END - Dashboard Registration
 
 const chainConfig = {
@@ -184,7 +183,7 @@ function App() {
 
   return (
     <div className="container">
-      
+
     </div>
   );
 }
