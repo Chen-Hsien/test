@@ -1,5 +1,5 @@
 "use client";
-
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { CHAIN_NAMESPACES, IProvider, WEB3AUTH_NETWORK } from "@web3auth/base";
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
 // IMP START - Quick Start
@@ -180,39 +180,11 @@ function App() {
     </>
   );
 
-  const unloggedInView = (
-    <button onClick={login} className="card">
-      Login
-    </button>
-  );
+  const unloggedInView = <ConnectButton></ConnectButton>;
 
   return (
     <div className="container">
-      <h1 className="title">
-        <a
-          target="_blank"
-          href="https://web3auth.io/docs/sdk/pnp/web/modal"
-          rel="noreferrer"
-        >
-          Web3Auth{" "}
-        </a>
-        & NextJS Quick Start
-      </h1>
-
-      <div className="grid">{loggedIn ? loggedInView : unloggedInView}</div>
-      <div id="console" style={{ whiteSpace: "pre-line" }}>
-        <p style={{ whiteSpace: "pre-line" }}></p>
-      </div>
-
-      <footer className="footer">
-        <a
-          href="https://github.com/Web3Auth/web3auth-pnp-examples/tree/main/web-modal-sdk/quick-starts/nextjs-modal-quick-start"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Source code
-        </a>
-      </footer>
+      
     </div>
   );
 }

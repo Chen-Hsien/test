@@ -2,7 +2,11 @@
 
 import { rainbowWallet, metaMaskWallet } from "@rainbow-me/rainbowkit/wallets";
 import { rainbowWeb3AuthConnector } from "./RainbowWeb3authConnector";
-import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import {
+  getDefaultConfig,
+  RainbowKitProvider,
+  ConnectButton,
+} from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { polygon, polygonMumbai } from "viem/chains";
 import { http, WagmiProvider } from "wagmi";
@@ -30,6 +34,7 @@ function BlockchainProvider({ children }: { children: React.ReactNode }) {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
+          <ConnectButton />
           {children}
         </RainbowKitProvider>
       </QueryClientProvider>
